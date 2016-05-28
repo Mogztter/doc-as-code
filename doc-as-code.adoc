@@ -1,0 +1,250 @@
+﻿= Doc as code
+
+Ecrire de la documentation comme on écrit du code, c'est possible!
+
+Aujourd'hui je vais vous parler de documentation...
+
+// TODO: Choix de l'intro
+// 1. La documentation c'est pas fun si on utilise pas les bons outils (jouer avec l'apriori négatif de la documentation)
+// ** TODO: Est-ce que la documentation a toujours un apriori négatif ?
+// 2. La documentation et le code c'est pas la même chose
+// ** Approche plus positif, vous aimez écrire du code (vous allez adorer) je vais vous faire adorer écrire de la documentation!
+
+// Documentation "not fun"
+// Dans certaines équipes, la documentation c'est un peu la punition.
+// Généralement c'est un sujet qui ne passione pas vraiment les développeurs... écrire de la documentation.
+
+// C'est vrai qu'écrire de la documentation, ce n'est pas toujours très "fun".
+// Pourtant écrire du code c'est "fun".
+// Ce qui serait bien ça serait d'écrire de la documentation comme on écrit du code...
+
+Combien d'entre vous ecrive de la documentation regulièrement (au moins une fois par semaine) ? et combien d'entre vous apprécie écrire de la documentation ?
+
+== // entre coder et documenter
+
+// Même slide sur lequel on change les mots "résoudre" par "expliquer" et "code" par "documentation" ?
+
+Coder c'est:
+
+ 1. Réflechir
+ 2. Ecrire
+ 3. Maintenir
+
+_Réflechir_ à la meilleure façon de résoudre un problème, pour _écrire_ un code lisible, facilement _maintenable_.[1]
+
+// [1] ie. de manière la plus claire, consice et élégante (performante)
+
+Documenter c'est:
+
+_Réflechir_ à la meilleure façon [line-through]#de résoudre# *d'expliquer* un problème, pour _écrire_ [line-through]#un code# *une documentation* lisible, facilement _maintenable_.
+
+
+Coder et documenter c'est donc quasiment la même chose.
+Dans un cas on veut *résoudre* un problème et dans l'autre on veut *l'expliquer*.
+
+Mais pour résoudre un problème, il est important de savoir l'expliquer!
+
+---
+
+Maintenant ce qui serait bien, ça serait de pouvoir écrire de la documentation comme on écrit du code...
+Ce qui serait bien ça serait de pouvoir...
+
+== As a [developer|writer] I want to...
+
+ * variables
+// utiliser des variables
+ * structure
+// découper et structurer sa documentation pour faciliter la maintenance
+ * composition
+// composer et inclure des morceaux de documentation pour être DRY
+ * conditions
+// utiliser des conditions pour s'adapter en fonction de l'environnement du lecteur
+ * integration
+// intégrer sa documentation avec son outil de build, son IDE, son navigateur...
+ * extension
+// pouvoir "étendre" sa documentation
+
+Là ça commence à devenir intéressant!
+
+---
+
+Et pour bien commencer un projet, il y a l'indispensable...
+
+== Indispensable
+
+ * Versionner sa documentation technique avec son code
+// Facilite la revue de code (code + documentation dans la même pull request)
+// Facilite les refactoring (code + documentation à jour)
+// Permet d'utiliser des variables de votre environnement de travail (n° de version, URL vers le dépôt...)
+// *Evite le changement de contexte IDE <-> documentation*
+ * Ecrire sa documentation en texte brute "plain text"
+// Facilite les diff (avec votre gestionnaire de source)
+// Editable par tout le monde (avec n'importe quel éditeur de texte: Vim, Emacs, IntelliJ... même Eclipse!)
+// Evite de mélanger le fond et la forme (les goûts et les couleurs...)
+
+---
+
+Maintenant qu'on est prêt à démarrer, on va pouvoir écrire de la documentation comme on écrit du code...
+
+== Variables
+
+// Objectif: DRY
+
+[source,adoc]
+....
+:uri-homepage: http://asciidoctor.org // <1>
+:uri-docs: {uri-homepage}/docs // <2>
+
+ - {uri-docs}/user-manual
+ - {uri-docs}/asciidoc-syntax-quick-reference
+....
+// <1> URL de base du site Asciidoctor
+// <2> Réutilise la variable définie juste au dessus pour ajouter `/docs`
+
+==== Résultat
+
+:uri-homepage: http://asciidoctor.org
+:uri-docs: {uri-homepage}/docs
+
+ - {uri-docs}/user-manual
+ - {uri-docs}/asciidoc-syntax-quick-reference
+
+---
+
+Ok, mais pour être vraiment DRY il faudrait que j'évite de faire des copier-coller de ma documentation...
+
+== Structure et composition: inclusion de doc
+
+[source]
+....
+:docsdir: src/docs // <1>
+:artifact-version: 1.5.4 // <2>
+
+include::{docsdir}/install.adoc[] <3>
+....
+
+// <1> Même principe que sur le slide précédent
+// <2> Variable utilisée dans install.adoc
+// <3> Utilisation de la macro `include` pour inclure la procédure d'installation
+
+==== Résultat
+
+:docsdir: src/docs
+:artifact-version: 1.5.4
+
+[subs="specialcharacters,attributes,callouts"]
+====
+include::{docsdir}/install.adoc[]
+====
+
+---
+
+Hmmm, et comment je fais pour éviter de copier-coller mon code...
+
+== Structure et composition: inclusion partielle de code
+
+// Il est possible d'inclure un fichier entier mais la plupart du temps ce qui nous intéresse c'est une méthode ou un morceau de code en particulier.
+
+// Contexte:
+// C'est un test de AsciidoctorJ (implémentation Java d'Asciidoctor) pour valider l'option "hide URI scheme" qui comme son nom l'indique permet de masquer le schéma sur les liens
+// Ici on veut afficher un lien sur le site d'Asciidoctor.org mais sans le "http://"
+
+// Description:
+//
+
+:testpkg: src/test/java/org/asciidoctor
+
+[source,java,indent=0]
+[subs="specialcharacters,attributes"]
+----
+include::{testpkg}/WhenAttributesAreUsed.java[tags=uri-scheme-test]
+----
+// <1> Tag de début
+// <2> Tag de fin
+// On ne veut pas afficher l'assertion uniquement le code expliquant comment utiliser l'option hiddenUriScheme
+
+[source]
+....
+:testdir: ${project.build.testSourceDirectory} // <1>
+:testpkg: {testdir}/org/asciidoctor // <2>
+
+[source,java]
+----
+include::{testpkg}/WhenAttributesAreUsed.java[tag=uri-scheme] // <3>
+----
+<1> Positionne l'attribut permettant de masquer le schéma sur les liens
+....
+
+// <1> Utilise une variable du build Maven (filtering)
+// <2> Réutilise la variable définie juste au dessus pour ajouter le package
+// <3> Précise le tag à utiliser (possibilité de préciser plusieurs tag séparé par des virgules)
+
+==== Résultat
+
+:testpkg: src/test/java/org/asciidoctor
+
+[source,java,indent=0]
+----
+include::{testpkg}/WhenAttributesAreUsed.java[tags=uri-scheme]
+----
+<1> Positionne l'attribut permettant de masquer le schéma sur les liens
+
+== Conditions
+
+[source,adoc]
+....
+ifdef::env-github[] // <1>
+I'm on GitHub!
+\endif::[]
+
+ifndef::env-github[] // <2>
+I'm clearly somewhere else right now.
+\endif::[]
+....
+
+// <1> Si la variable est définie
+// <2> Si la variable n'est pas définie
+
+==== Résultat
+
+[source]
+....
+:env-github:
+....
+
+:env-github:
+
+ifdef::env-github[]
+I'm on GitHub!
+endif::[]
+ifndef::env-github[]
+I'm clearly somewhere else right now.
+endif::[]
+
+[source]
+....
+:!env-github:
+....
+
+:!env-github:
+
+ifdef::env-github[]
+I'm on GitHub!
+endif::[]
+ifndef::env-github[]
+I'm clearly somewhere else right now.
+endif::[]
+
+== Intégration
+
+Live preview Atom + Chrome ?
+
+== Extension
+
+=== Un peu de Java
+
+Extension Java + build Maven ?
+
+=== Un peu de Web
+
+Extension JavaScript + build npm ?
