@@ -1,0 +1,9 @@
+= Speaker Notes
+
+//tag::title[]
+Bonjour à tous !
+Je m'appelle Guillaume Grossetie.
+Je suis développeur indépendant et aujourd'hui j'ai envie de vous parler de...
+//end::title[]
+
+...documentation!
