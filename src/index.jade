@@ -1,0 +1,84 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title Documentation as Code
+
+    link(rel='stylesheet', type='text/css', href='build/build.css')
+
+  body
+
+    article
+
+      section
+        h1 Documentation as code
+
+      section
+        h2 Métier
+        ul
+          li 💡
+          li ✏
+          li 🔧
+
+      section
+        h2 Coder
+        h3 💡 à la meilleure façon #[strong de résoudre] un problème, <br/> afin ✏ #[strong un code] lisible, <br/> facilement 🔧
+
+      section
+        h2 Documenter
+        h3 💡 à la meilleure façon #[strong d&apos;expliquer] un problème,<br/> afin ✏ #[strong une documentation] lisible,<br/> facilement 🔧
+
+      section
+        h2 Débugger
+        span.xl 🦆
+        #img(src='images/rubber-duck.jpg', style='width: 100%;')
+
+      section
+        h2 Bien démarrer...
+        ul
+          li 📄
+          li 🗃
+
+      section
+        h2 Fonctionnalités
+        ul
+          li variables
+          li structure
+          li composition
+          li conditions
+          li intégration
+          li extension
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Variables
+        pre
+          code.language-adoc.
+            [source,adoc]
+            ....
+            :uri-homepage: http://asciidoctor.org // <1>
+            :uri-docs: {uri-homepage}/docs // <2>
+
+            - {uri-docs}/user-manual
+            - {uri-docs}/asciidoc-syntax-quick-reference
+            ....
+            // <1> URL de base du site Asciidoctor
+            // <2> Réutilise la variable définie juste au dessus pour ajouter `/docs`
+
+      section
+        h2 Résultat
+
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Structure
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Composition
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Intégration
+
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Extension
+
+    script(src='build/build.js')

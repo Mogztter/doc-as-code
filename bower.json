@@ -1,0 +1,7 @@
+{
+  "name": "presentation-documentation-as-code",
+  "version": "0.0.0",
+  "dependencies": {
+    "prism": "gh-pages"
+  }
+}

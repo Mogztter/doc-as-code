@@ -1,90 +1,94 @@
-﻿= Doc as code
+= Doc as code
 
 Ecrire de la documentation comme on écrit du code, c'est possible!
 
+== Intro
+
+[slide,"Introduction"]
 Aujourd'hui je vais vous parler de documentation...
 
-// TODO: Choix de l'intro
-// 1. La documentation c'est pas fun si on utilise pas les bons outils (jouer avec l'apriori négatif de la documentation)
-// ** TODO: Est-ce que la documentation a toujours un apriori négatif ?
-// 2. La documentation et le code c'est pas la même chose
-// ** Approche plus positif, vous aimez écrire du code (vous allez adorer) je vais vous faire adorer écrire de la documentation!
+// TODO: Choisir une approche pour l'intro
+// Approche "négative"
+// "Jouer avec l'apriori négatif sur la documentation"
+// NOTE: Est-ce que la documentation a toujours un apriori négatif ?
+// Approche "positive"
+// "Vous aimez écrire du code, vous allez adorer écrire de la documentation!"
+// NOTE: Avec cette approche on arrive directement à la conclusion, on ne pose pas une problèmatique à laquelle on répond.
 
-// Documentation "not fun"
-// Dans certaines équipes, la documentation c'est un peu la punition.
-// Généralement c'est un sujet qui ne passione pas vraiment les développeurs... écrire de la documentation.
+Dans certaines équipes, la documentation c'est un peu la punition.
+Généralement c'est un sujet qui ne passione pas vraiment les développeurs... écrire de la documentation... beuh!
 
-// C'est vrai qu'écrire de la documentation, ce n'est pas toujours très "fun".
-// Pourtant écrire du code c'est "fun".
-// Ce qui serait bien ça serait d'écrire de la documentation comme on écrit du code...
+Pourtant dans notre métier on passe beaucoup de temps à écrire... certes on écrit du code mais on écrit quand même!
 
-Combien d'entre vous ecrive de la documentation regulièrement (au moins une fois par semaine) ? et combien d'entre vous apprécie écrire de la documentation ?
+En essayant de comprendre pourquoi, je me suis demandé quelles étaient les différences entre coder et documenter.
 
-== // entre coder et documenter
+== Différences entre "coder" et "documenter"
 
+Et je suis arrivé sur cette définition :
+
+[slide,"Définition"]
 // Même slide sur lequel on change les mots "résoudre" par "expliquer" et "code" par "documentation" ?
+
+_Réflechir_ à la meilleure façon de résoudre un problème, afin d'_écrire_ un code lisible, facilement _maintenable_.[1]
+// [1] ie. de manière la plus claire, consice et élégante (performante)
 
 Coder c'est:
 
- 1. Réflechir
- 2. Ecrire
- 3. Maintenir
+1. Réflechir
+2. Ecrire
+3. Maintenir
 
-_Réflechir_ à la meilleure façon de résoudre un problème, pour _écrire_ un code lisible, facilement _maintenable_.[1]
+Et documenter alors ?
 
-// [1] ie. de manière la plus claire, consice et élégante (performante)
-
-Documenter c'est:
-
-_Réflechir_ à la meilleure façon [line-through]#de résoudre# *d'expliquer* un problème, pour _écrire_ [line-through]#un code# *une documentation* lisible, facilement _maintenable_.
-
+_Réflechir_ à la meilleure façon [line-through]#de résoudre# *d'expliquer* un problème, afin d'_écrire_ [line-through]#un code# *une documentation* lisible, facilement _maintenable_.
 
 Coder et documenter c'est donc quasiment la même chose.
 Dans un cas on veut *résoudre* un problème et dans l'autre on veut *l'expliquer*.
 
-Mais pour résoudre un problème, il est important de savoir l'expliquer!
+Mais bien souvent, pour résoudre un problème, il est indispensable de savoir l'expliquer!
 
----
+[slide,"Rubber duck"]
+L'idée du "Rubber duck" est d'expliquer son problème à quelqu'un (ou quelque chose) afin de résoudre un problème.
 
-Maintenant ce qui serait bien, ça serait de pouvoir écrire de la documentation comme on écrit du code...
-Ce qui serait bien ça serait de pouvoir...
-
-== As a [developer|writer] I want to...
-
- * variables
-// utiliser des variables
- * structure
-// découper et structurer sa documentation pour faciliter la maintenance
- * composition
-// composer et inclure des morceaux de documentation pour être DRY
- * conditions
-// utiliser des conditions pour s'adapter en fonction de l'environnement du lecteur
- * integration
-// intégrer sa documentation avec son outil de build, son IDE, son navigateur...
- * extension
-// pouvoir "étendre" sa documentation
-
-Là ça commence à devenir intéressant!
-
----
+Un des aspects que j'apprecie le plus quand j'écris de la documentation est que je finis toujours par améliorer mon code.
+Quand on explique son code, on se rend compte qu'il n'est pas aussi simple qu'on l'aurais voulu.
+Cela me permet d'itérer sur mon code pour le rendre plus facile à expliquer mais aussi plus simple, plus cohérent.
 
 Et pour bien commencer un projet, il y a l'indispensable...
 
-== Indispensable
+[slide,"Prérequis"]
+== Prérequis
 
  * Versionner sa documentation technique avec son code
 // Facilite la revue de code (code + documentation dans la même pull request)
+// Image de pull request GitHub sur Golo ?
 // Facilite les refactoring (code + documentation à jour)
 // Permet d'utiliser des variables de votre environnement de travail (n° de version, URL vers le dépôt...)
 // *Evite le changement de contexte IDE <-> documentation*
  * Ecrire sa documentation en texte brute "plain text"
+// Image du tweet "do not use binary format"
 // Facilite les diff (avec votre gestionnaire de source)
+// Image GitHub de diff de documentation
 // Editable par tout le monde (avec n'importe quel éditeur de texte: Vim, Emacs, IntelliJ... même Eclipse!)
 // Evite de mélanger le fond et la forme (les goûts et les couleurs...)
 
----
+[slide,"As a {developer|writer} I want to..."]
+== As a {developer|writer} I want to...
 
-Maintenant qu'on est prêt à démarrer, on va pouvoir écrire de la documentation comme on écrit du code...
+Maintenant qu'on est prêt à démarrer, ce qui serait bien ça serait d'avoir les mêmes fonctionnalités quand on écrit de la documentation que quand on écrit du code...
+
+* variables
+// utiliser des variables
+* structure
+// découper et structurer sa documentation pour faciliter la maintenance
+* composition
+// composer et inclure des morceaux de documentation pour être DRY
+* conditions
+// utiliser des conditions pour s'adapter en fonction de l'environnement du lecteur
+* integration
+// intégrer sa documentation avec son outil de build, son IDE, son navigateur...
+* extension
+// pouvoir "étendre" sa documentation
 
 == Variables
 

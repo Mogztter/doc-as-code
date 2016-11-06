@@ -6,4 +6,37 @@ Je m'appelle Guillaume Grossetie.
 Je suis développeur indépendant et aujourd'hui j'ai envie de vous parler de...
 //end::title[]
 
-...documentation!
+...documentation.
+
+
+== Me
+
+Je suis développeur et, comme la majorité d'entre vous, j'adore écrire du code!
+Par contre je connais assez peu de développeur qui me dise, j'adore écrire de la documentation.
+
+Dans certaines équipes, la documentation c'était un peu la punition!
+
+> Tu as cassé la production ? Bon ben la semaine prochaine tu écris de la documentation!
+
+
+
+Par contre, au début de ans mes premières experiences,  la documentation c''était un peu la punition
+
+Comme vous j'adore écrire du code!
+
+
+//Plus précisement de comment écrire de la documentation comme on écrit du code.
+
+Rubber duck
+
+Idées:
+
+* Améliorer son code
+** Permet de réflechir à son code
+*** si la documentation est dure à écrire c'est peut être que le code n'est pias . simple != facile. Facile à écrire
+
+simple, limpide
+
+Easy is easy. Easy is a minimum amount of effort to produce a result.
+
+Simple is very hard. Simple is the removal of everything except what matters.
